@@ -32,11 +32,22 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
+        undofile = false,
+        compatible = false,
+        termguicolors = true,
+        foldmethod = "expr",
+        foldexpr = "nvim_treesitter#foldexpr()",
+        conceallevel = 2,
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
         -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
         -- This can be found in the `lua/lazy_setup.lua` file
+        -- logging_level = "info",
+        loaded_perl_provider = 0,
+        python3_host_prog = "/opt/homebrew/anaconda3/bin/python3",
+        neoformat_only_msg_on_error = 1,
+        neo_tree_remove_legacy_commands = true,
       },
     },
     -- Mappings can be configured through AstroCore as well.
