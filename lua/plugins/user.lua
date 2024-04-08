@@ -1,5 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- You can also add or configure plugins by creating files in this `plugins/` folder
 -- Here are some examples:
 
@@ -11,40 +9,19 @@ return {
   "andweeb/presence.nvim",
   {
     "ray-x/lsp_signature.nvim",
+    enabled = false,
     event = "BufRead",
     config = function() require("lsp_signature").setup() end,
   },
 
   -- == Examples of Overriding Plugins ==
-
-  -- customize alpha options
-  {
-    "goolord/alpha-nvim",
-    opts = function(_, opts)
-      -- customize the dashboard header
-      opts.section.header.val = {
-        " █████  ███████ ████████ ██████   ██████",
-        "██   ██ ██         ██    ██   ██ ██    ██",
-        "███████ ███████    ██    ██████  ██    ██",
-        "██   ██      ██    ██    ██   ██ ██    ██",
-        "██   ██ ███████    ██    ██   ██  ██████",
-        " ",
-        "    ███    ██ ██    ██ ██ ███    ███",
-        "    ████   ██ ██    ██ ██ ████  ████",
-        "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
-        "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
-        "    ██   ████   ████   ██ ██      ██",
-      }
-      return opts
-    end,
-  },
-
   -- You can disable default plugins as follows:
   { "max397574/better-escape.nvim", enabled = false },
 
   -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
   {
     "L3MON4D3/LuaSnip",
+    enabled = false,
     config = function(plugin, opts)
       require "astronvim.plugins.configs.luasnip"(plugin, opts) -- include the default astronvim config that calls the setup call
       -- add more custom luasnip configuration such as filetype extend or custom snippets
@@ -55,6 +32,7 @@ return {
 
   {
     "windwp/nvim-autopairs",
+    enabled = false,
     config = function(plugin, opts)
       require "astronvim.plugins.configs.nvim-autopairs"(plugin, opts) -- include the default astronvim config that calls the setup call
       -- add more custom autopairs configuration such as custom rules

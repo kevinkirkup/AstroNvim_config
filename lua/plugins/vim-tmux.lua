@@ -1,8 +1,8 @@
-local utils = require("user.util.misc")
+local utils = require "util.misc"
 
-if utils.executable("tmux") then
-	-- .tmux.conf syntax highlighting and setting check
-	return { "tmux-plugins/vim-tmux", ft = { "tmux" } }
+if utils.executable "tmux" then
+  -- .tmux.conf syntax highlighting and setting check
+  return { "tmux-plugins/vim-tmux", ft = { "tmux" } }
 else
-	return {}
+  return {}
 end
