@@ -1,12 +1,12 @@
 -- The missing auto-completion for cmdline!
 return {
-  { "romgrk/fzy-lua-native" },
   {
     "gelguy/wilder.nvim",
     dependencies = {
       "romgrk/fzy-lua-native",
       "nvim-tree/nvim-web-devicons",
     },
+    build = ":UpdateRemotePlugins",
     opts = {
       modes = { ":", "/", "?" },
       next_key = "<Tab>",

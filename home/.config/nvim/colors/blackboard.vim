@@ -47,7 +47,9 @@ hi link Operator        Statement
 hi link Statement       Statement
 
 hi Pmenu ctermfg=white gui=bold
+hi Pmenu guifg=#aeaeae guibg=#0D1021
 hi Pmenu ctermbg=darkgrey gui=bold
+
 hi PmenuSel ctermfg=white gui=bold
 hi PmenuSel ctermbg=magenta gui=bold
 
