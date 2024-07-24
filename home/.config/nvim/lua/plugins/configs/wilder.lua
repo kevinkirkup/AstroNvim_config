@@ -15,7 +15,8 @@ return function(_, opts)
           end
         end,
         dir_command = { "fd", "-td" },
-        filters = { "cpsm_filter" },
+        -- filters = { "cpsm_filter" },
+        filters = { "fuzzy_filter", "difflib_sorter" },
       },
       wilder.substitute_pipeline {
         pipeline = wilder.python_search_pipeline {

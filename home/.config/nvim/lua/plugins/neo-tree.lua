@@ -85,11 +85,11 @@ return {
       source_selector = {
         winbar = true,
         content_layout = "start",
-        tab_labels = {
-          filesystem = get_icon "FolderClosed" .. " File",
-          buffers = get_icon "DefaultFile" .. " Bufs",
-          git_status = get_icon "Git" .. " Git",
-          diagnostics = get_icon "Diagnostic" .. " Diagnostic",
+        sources = {
+          { source = "filesystem" },
+          { source = "buffers" },
+          { source = "git_status" },
+          { source = "diagnostics" },
         },
       },
       default_component_configs = {
@@ -118,7 +118,10 @@ return {
       window = {
         width = 50,
         mappings = {
-          ["<space>"] = false, -- disable space until we figure out which-key disabling
+          ["<space>"] = {
+            "toggle_node",
+            nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
+          },
           ["[b"] = "prev_source",
           ["]b"] = "next_source",
           o = "open",
@@ -139,7 +142,9 @@ return {
           },
           never_show = {},
         },
-        follow_current_file = true,
+        follow_current_file = {
+          enabled = true,
+        },
         hijack_netrw_behavior = "open_current",
         use_libuv_file_watcher = true,
         commands = global_commands,
