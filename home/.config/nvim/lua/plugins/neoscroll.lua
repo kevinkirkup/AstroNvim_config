@@ -2,7 +2,7 @@
 return {
   "karb94/neoscroll.nvim",
   opts = {
-    easing_function = "quadratic",
+    easing = "quadratic",
   },
   config = require "plugins.configs.neoscroll",
 }
