@@ -1,7 +1,7 @@
 return function(_, opts)
-  vim.cmd [[hi HopNextKey cterm=bold ctermfg=176 gui=bold guibg=#242b4e guifg=#ffffff]]
-  vim.cmd [[hi HopNextKey1 cterm=bold ctermfg=176 gui=bold guibg=#242b4e guifg=#ffffff]]
-  vim.cmd [[hi HopNextKey2 cterm=bold ctermfg=176 gui=bold guibg=#242b4e guifg=#ffffff]]
+  pcall(vim.cmd, [[hi HopNextKey cterm=bold ctermfg=176 gui=bold guibg=#242b4e guifg=#ffffff]])
+  pcall(vim.cmd, [[hi HopNextKey1 cterm=bold ctermfg=176 gui=bold guibg=#242b4e guifg=#ffffff]])
+  pcall(vim.cmd, [[hi HopNextKey2 cterm=bold ctermfg=176 gui=bold guibg=#242b4e guifg=#ffffff]])
 
   local keymap = vim.keymap
   local hop = require "hop"

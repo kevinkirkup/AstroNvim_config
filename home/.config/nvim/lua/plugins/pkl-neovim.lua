@@ -6,6 +6,6 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 	},
 	build = function()
-		vim.cmd("TSInstall! pkl")
+		pcall(vim.cmd, "TSInstall! pkl")
 	end,
 }

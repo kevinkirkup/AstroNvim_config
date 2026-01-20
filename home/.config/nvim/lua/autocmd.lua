@@ -4,10 +4,10 @@ local api = vim.api
 local utils = require "util.misc"
 
 -- Disable `targets` `b` target since it conflicts with `sandwich`.
-vim.cmd [[autocmd User targets#mappings#user call targets#mappings#extend({
+pcall(vim.cmd, [[autocmd User targets#mappings#user call targets#mappings#extend({
     \ 'b': {},
     \ })
-]]
+]])
 
 -- Display a message when the current file is not in utf-8 format.
 -- Note that we need to use `unsilent` command here because of this issue:
@@ -29,13 +29,13 @@ api.nvim_create_autocmd({ "User" }, {
   callback = function() vim.highlight.on_yank { higroup = "YankColor", timeout = 300 } end,
 })
 
-vim.cmd [[
+pcall(vim.cmd, [[
 aug VMlens
     au!
     au User visual_multi_start lua require('user.util.vmlens').start()
     au User visual_multi_exit lua require('user.util.vmlens').exit()
 aug END
-]]
+]])
 
 -- Auto-create dir when saving a file, in case some intermediate directory does not exist
 api.nvim_create_autocmd({ "BufWritePre" }, {
@@ -50,7 +50,7 @@ api.nvim_create_autocmd({ "BufWritePre" }, {
 api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*.ex", "*.exs", "*.rs" },
   group = api.nvim_create_augroup("fmt", { clear = true }),
-  callback = function() vim.cmd "undojoin | Neoformat" end,
+  callback = function() pcall(vim.cmd, "undojoin | Neoformat") end,
 })
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
@@ -75,7 +75,7 @@ api.nvim_create_autocmd({ "FocusGained", "CursorHold" }, {
   pattern = "*",
   group = "auto_read",
   callback = function()
-    if fn.getcmdwintype() == "" then vim.cmd "checktime" end
+    if fn.getcmdwintype() == "" then pcall(vim.cmd, "checktime") end
   end,
 })
 

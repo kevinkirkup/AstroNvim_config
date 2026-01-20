@@ -35,7 +35,7 @@ return {
 			vim.opt_local.fillchars:append({ eob = " " })
 			vim.opt_local.scrolloff = 0
 
-			vim.cmd(
+			pcall(vim.cmd,
 				[[silent! %!sed -E ]]
 					.. [[-e 's/^[]8;;[^\]*[\]//g' ]]
 					.. [[-e 's/^[]133;[AC][;k-s]*^[\\//g]' ]]

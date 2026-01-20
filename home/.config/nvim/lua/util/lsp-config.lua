@@ -81,7 +81,7 @@ function M.custom_attach(client, bufnr)
 
   -- The blow command will highlight the current variable and its usages in the buffer.
   if client.server_capabilities.documentHighlightProvider then
-    vim.cmd [[
+    pcall(vim.cmd, [[
       hi! link LspReferenceRead Visual
       hi! link LspReferenceText Visual
       hi! link LspReferenceWrite Visual
@@ -90,7 +90,7 @@ function M.custom_attach(client, bufnr)
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
-    ]]
+    ]])
   end
 
   if vim.g.logging_level == "debug" then
