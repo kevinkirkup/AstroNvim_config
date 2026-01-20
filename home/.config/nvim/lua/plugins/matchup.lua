@@ -1,2 +1,6 @@
 -- Modern matchit implementation
-return { "andymass/vim-matchup" }
+if false then
+  return { "andymass/vim-matchup" }
+else
+  return {}
+end

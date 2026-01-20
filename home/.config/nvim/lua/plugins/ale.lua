@@ -1,2 +1,6 @@
 -- ALE
-return { "dense-analysis/ale" }
+if false then
+  return { "dense-analysis/ale" }
+else
+  return {}
+end
