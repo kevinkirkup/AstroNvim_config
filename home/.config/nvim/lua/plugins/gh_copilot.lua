@@ -1,4 +1,7 @@
-return {
-  "github/copilot.vim",
-  opts = {},
-}
+if true then
+  return {
+    "github/copilot.vim",
+  }
+else
+  return {}
+end
