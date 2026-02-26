@@ -19,8 +19,3 @@ let g:pymode_lint_options_pylint =
 " Disable rope since we are using YouCompleteMe
 let g:pymode_rope=0
 "let g:pymode_rope_lookup_project=0
-
-autocmd FileType python map  <Leader>pt <Esc>  :PymodeLintToggle<CR>
-autocmd FileType python map! <Leader>pt <Esc>  :PymodeLintToggle<CR>
-autocmd FileType python map  <Leader>pl <Esc>  :PymodeLint<CR>
-autocmd FileType python map! <Leader>pl <Esc>  :PymodeLint<CR>
