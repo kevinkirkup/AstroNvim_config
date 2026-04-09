@@ -67,6 +67,15 @@ return {
           }, "\n"),
         },
       },
+      indent = {
+        scope = {
+          only_current = true,
+          underline = false, -- underline the start of the scope
+        },
+        chunk = {
+          enabled = true,
+        },
+      },
     },
   },
 

@@ -1,6 +1,3 @@
+if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 -- ALE
-if false then
-  return { "dense-analysis/ale" }
-else
-  return {}
-end
+return { "dense-analysis/ale" }

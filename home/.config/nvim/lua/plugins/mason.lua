@@ -15,7 +15,7 @@ return {
         "docker-compose-language-service",
         "docker-language-server",
         "dockerfile-language-server",
-        "elixir-ls",
+        -- "elixir-ls",
         "gopls",
         "json-lsp",
         "lua-language-server",

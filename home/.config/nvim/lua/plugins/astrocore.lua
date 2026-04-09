@@ -41,7 +41,7 @@ return {
         relativenumber = true, -- sets vim.opt.relativenumber
         number = true, -- sets vim.opt.number
         spell = false, -- sets vim.opt.spell
-        signcolumn = "yes", -- sets vim.opt.signcolumn to yes
+        signcolumn = "auto", -- sets vim.opt.signcolumn to yes
         wrap = false, -- sets vim.opt.wrap
         undofile = false,
         compatible = false,
@@ -60,6 +60,7 @@ return {
         python3_host_prog = "/opt/homebrew/anaconda3/bin/python3",
         neoformat_only_msg_on_error = 1,
         neo_tree_remove_legacy_commands = true,
+        copilot_no_tab_map = true,
       },
     },
     -- Mappings can be configured through AstroCore as well.
@@ -89,6 +90,14 @@ return {
 
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
+      },
+      i = {
+        ["<C-J>"] = {
+          'copilot#Accept("\\<CR>")',
+          desc = "Accept Copilot suggestion",
+          expr = true,
+          replace_keycodes = false,
+        },
       },
     },
   },

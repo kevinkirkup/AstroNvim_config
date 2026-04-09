@@ -1,6 +1,4 @@
+if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+
 -- Modern matchit implementation
-if false then
-  return { "andymass/vim-matchup" }
-else
-  return {}
-end
+return { "andymass/vim-matchup" }
