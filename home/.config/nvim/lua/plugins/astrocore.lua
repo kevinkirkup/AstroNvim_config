@@ -91,14 +91,7 @@ return {
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
       },
-      i = {
-        ["<C-J>"] = {
-          'copilot#Accept("\\<CR>")',
-          desc = "Accept Copilot suggestion",
-          expr = true,
-          replace_keycodes = false,
-        },
-      },
+      i = {},
     },
   },
 }
