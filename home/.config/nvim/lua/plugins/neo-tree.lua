@@ -1,9 +1,9 @@
+-- Neo-tree file explorer
 return {
   "nvim-neo-tree/neo-tree.nvim",
   dependencies = { "MunifTanjim/nui.nvim" },
   cmd = "Neotree",
   opts = function()
-    -- TODO: move after neo-tree improves (https://github.com/nvim-neo-tree/neo-tree.nvim/issues/707)
     local global_commands = {
       system_open = function(state) require("astrocore").system_open(state.tree:get_node():get_id()) end,
 
@@ -21,7 +21,7 @@ return {
         if node.type == "directory" or node:has_children() then
           if not node:is_expanded() then -- if unexpanded, expand
             state.commands.toggle_node(state)
-          else -- if expanded and has children, seleect the next child
+          else -- if expanded and has children, select the next child
             require("neo-tree.ui.renderer").focus_node(state, node:get_child_ids()[1])
           end
         else -- if not a directory just open it
@@ -38,18 +38,9 @@ return {
         local results = {
           e = { val = modify(filename, ":e"), msg = "Extension only" },
           f = { val = filename, msg = "Filename" },
-          F = {
-            val = modify(filename, ":r"),
-            msg = "Filename w/o extension",
-          },
-          h = {
-            val = modify(filepath, ":~"),
-            msg = "Path relative to Home",
-          },
-          p = {
-            val = modify(filepath, ":."),
-            msg = "Path relative to CWD",
-          },
+          F = { val = modify(filename, ":r"), msg = "Filename w/o extension" },
+          h = { val = modify(filepath, ":~"), msg = "Path relative to Home" },
+          p = { val = modify(filepath, ":."), msg = "Path relative to CWD" },
           P = { val = filepath, msg = "Absolute path" },
         }
 
@@ -79,12 +70,11 @@ return {
     local get_icon = require("astroui").get_icon
 
     return {
-      auto_clean_after_session_restore = true,
-      close_if_last_window = false,
-      sources = { "filesystem", "buffers", "git_status" },
+      auto_clean_after_session_restore = true, -- default: false
+      sources = { "filesystem", "buffers", "git_status", "diagnostics" },
       source_selector = {
-        winbar = true,
-        content_layout = "start",
+        winbar = true, -- default: false
+        -- explicit sources needed to include diagnostics (not in default list)
         sources = {
           { source = "filesystem" },
           { source = "buffers" },
@@ -116,14 +106,12 @@ return {
         },
       },
       window = {
-        width = 50,
+        width = 50, -- default: 40
         mappings = {
-          ["<space>"] = {
-            "toggle_node",
-            nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
-          },
+          -- source navigation (default uses < and >)
           ["[b"] = "prev_source",
           ["]b"] = "next_source",
+          -- custom command bindings
           o = "open",
           O = "system_open",
           h = "parent_or_close",
@@ -133,23 +121,19 @@ return {
       },
       filesystem = {
         filtered_items = {
-          visible = true,
-          hide_dotfiles = true,
-          hide_gitignored = true,
-          hide_by_name = {
-            -- ".DS_Store",
-            -- ".git",
-          },
-          never_show = {},
+          visible = true, -- default: false; show filtered items with different highlight
+          hide_by_name = {}, -- default hides .DS_Store and thumbs.db; override to hide nothing by name
         },
-        follow_current_file = {
-          enabled = true,
-        },
-        hijack_netrw_behavior = "open_current",
-        use_libuv_file_watcher = true,
+        follow_current_file = { enabled = true }, -- default: false
+        hijack_netrw_behavior = "open_current", -- default: "open_default"
+        use_libuv_file_watcher = true, -- default: false
         commands = global_commands,
       },
-      buffers = { commands = global_commands },
+      buffers = {
+        group_empty_dirs = false, -- default: true
+        show_unloaded = true,     -- default: false; show session-restored unloaded buffers
+        commands = global_commands,
+      },
       git_status = { commands = global_commands },
       diagnostics = { commands = global_commands },
       event_handlers = {
