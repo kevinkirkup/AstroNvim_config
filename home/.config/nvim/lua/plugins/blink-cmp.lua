@@ -4,13 +4,11 @@ return {
   opts = {
     keymap = {
       -- Tab priority:
-      --   1. select_next   — navigate menu when visible
-      --   2. snippet_forward — advance snippet placeholder
-      --   3. copilot accept — accept inline Copilot suggestion
-      --   4. fallback       — default vim Tab
+      --   1. copilot accept  — accept inline suggestion if rendered (wins over blink menu)
+      --   2. select_next     — navigate blink menu
+      --   3. snippet_forward — advance snippet placeholder
+      --   4. fallback        — default vim Tab
       ["<Tab>"] = {
-        "select_next",
-        "snippet_forward",
         function()
           local suggestion = vim.fn["copilot#GetDisplayedSuggestion"]()
           if suggestion and suggestion.text ~= "" then
@@ -19,6 +17,8 @@ return {
           end
           return false
         end,
+        "select_next",
+        "snippet_forward",
         "fallback",
       },
     },
