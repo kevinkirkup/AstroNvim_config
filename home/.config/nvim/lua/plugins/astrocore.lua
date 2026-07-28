@@ -60,8 +60,6 @@ return {
         python3_host_prog = "/opt/homebrew/anaconda3/bin/python3",
         neoformat_only_msg_on_error = 1,
         neo_tree_remove_legacy_commands = true,
-        copilot_no_tab_map = true,
-        copilot_idle_delay = 0, -- request suggestion immediately after typing stops (default: 75ms)
       },
     },
     -- Mappings can be configured through AstroCore as well.
